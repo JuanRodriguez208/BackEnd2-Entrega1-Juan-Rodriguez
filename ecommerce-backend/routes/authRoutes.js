@@ -6,7 +6,6 @@ require('dotenv').config();
 
 const router = express.Router();
 
-// Registro de usuario
 router.post('/register', async (req, res) => {
     const { first_name, last_name, email, age, password } = req.body;
 
@@ -19,7 +18,6 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Login de usuario
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -36,7 +34,6 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// Ruta "current" para obtener el usuario actual
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json(req.user);
 });
